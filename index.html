@@ -1,0 +1,515 @@
+<!-- v2 -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أفكار مودرن | خطة العمل</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0b0c;
+    --panel:#151417;
+    --panel-2:#1c1a1e;
+    --line:#2a2822;
+    --gold:#c9a44c;
+    --gold-light:#f0d78c;
+    --text:#f2ede1;
+    --muted:#9c968c;
+    --green:#4a6b4d;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Tajawal', sans-serif;
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--gold); color:#0b0b0c;}
+
+  /* --- Signature element: golden "now" pulse dot --- */
+  .now-dot{
+    display:inline-block;
+    width:8px; height:8px;
+    border-radius:50%;
+    background:var(--gold-light);
+    box-shadow:0 0 0 0 rgba(240,215,140,.6);
+    animation:pulse 2s infinite;
+    flex-shrink:0;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(240,215,140,.5);}
+    70%{box-shadow:0 0 0 8px rgba(240,215,140,0);}
+    100%{box-shadow:0 0 0 0 rgba(240,215,140,0);}
+  }
+
+  .app{ display:flex; min-height:100vh; }
+
+  /* SIDEBAR */
+  .sidebar{
+    width:250px; flex-shrink:0;
+    background:var(--panel);
+    border-left:1px solid var(--line);
+    padding:28px 18px;
+    display:flex; flex-direction:column;
+    position:sticky; top:0; height:100vh; overflow-y:auto;
+  }
+  .brand{ margin-bottom:34px; }
+  .brand-name{
+    font-family:'Cairo', sans-serif; font-weight:800; font-size:22px;
+    color:var(--gold-light); letter-spacing:.5px;
+  }
+  .brand-tag{ font-size:12.5px; color:var(--muted); margin-top:6px; line-height:1.6; }
+  .brand-line{ height:1px; background:linear-gradient(to left, var(--gold), transparent); margin-top:18px; }
+
+  nav{ display:flex; flex-direction:column; gap:4px; flex:1; }
+  .nav-btn{
+    display:flex; align-items:center; gap:10px;
+    background:none; border:none; color:var(--muted);
+    font-family:'Tajawal'; font-size:14.5px; font-weight:500;
+    text-align:right; padding:11px 12px; border-radius:8px;
+    cursor:pointer; transition:.18s;
+  }
+  .nav-btn .num{ font-family:'Cairo'; font-weight:700; font-size:12px; color:var(--gold); width:18px; }
+  .nav-btn:hover{ background:var(--panel-2); color:var(--text); }
+  .nav-btn.active{ background:var(--panel-2); color:var(--gold-light); border-right:2px solid var(--gold); }
+
+  .sidebar-foot{ font-size:11px; color:#5c584f; margin-top:20px; line-height:1.7; }
+
+  /* MAIN */
+  main{ flex:1; padding:38px 44px; max-width:980px; }
+  .section{ display:none; animation:fade .35s ease; }
+  .section.active{ display:block; }
+  @keyframes fade{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+
+  .section-head{ margin-bottom:26px; }
+  .eyebrow{ font-size:12px; color:var(--gold); letter-spacing:1px; font-weight:700; margin-bottom:6px; }
+  h1{ font-family:'Cairo'; font-size:28px; font-weight:800; color:var(--text); }
+  .sub{ color:var(--muted); font-size:14px; margin-top:8px; max-width:60ch; line-height:1.7; }
+
+  .card{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px;
+    padding:20px 22px; margin-bottom:14px;
+  }
+
+  /* Overview stats */
+  .stat-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:20px; }
+  .stat{ background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px 20px; }
+  .stat-val{ font-family:'Cairo'; font-weight:800; font-size:26px; color:var(--gold-light); }
+  .stat-label{ font-size:12.5px; color:var(--muted); margin-top:4px; }
+  .today-strip{ display:flex; align-items:center; gap:8px; color:var(--muted); font-size:13px; margin-bottom:22px; }
+
+  .goal-card{
+    background:linear-gradient(135deg, #1c1a1e, #17151a);
+    border:1px solid var(--gold); border-radius:16px; padding:24px 26px;
+  }
+  .goal-card .amount{ font-family:'Cairo'; font-weight:800; font-size:32px; color:var(--gold-light); }
+  .goal-card .label{ color:var(--muted); font-size:13px; margin-top:4px; }
+  .goal-card .bar-bg{ height:8px; background:var(--panel-2); border-radius:6px; margin-top:16px; overflow:hidden; }
+  .goal-card .bar-fill{ height:100%; background:linear-gradient(to left, var(--gold), var(--gold-light)); border-radius:6px; }
+
+  /* Team cards */
+  .team-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+  .team-card{ background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:20px; }
+  .team-card .role{ font-family:'Cairo'; font-weight:700; font-size:16px; color:var(--gold-light); }
+  .team-card .role-en{ font-size:11.5px; color:var(--muted); margin-top:2px; }
+  .team-card .desc{ font-size:13px; color:var(--muted); margin:12px 0; line-height:1.7; }
+  .team-card ul{ list-style:none; display:flex; flex-direction:column; gap:6px; margin-bottom:14px; }
+  .team-card li{ font-size:13px; color:var(--text); padding-right:14px; position:relative; }
+  .team-card li::before{ content:"—"; position:absolute; right:0; color:var(--gold); }
+  .next-box{
+    background:var(--panel-2); border-radius:10px; padding:12px 14px;
+    border-right:2px solid var(--gold);
+  }
+  .next-box .title{ display:flex; align-items:center; gap:7px; font-size:12px; font-weight:700; color:var(--gold-light); margin-bottom:6px; }
+  .next-box p{ font-size:12.5px; color:var(--muted); line-height:1.7; }
+
+  /* Weekly calendar */
+  .day-tabs{ display:flex; gap:6px; flex-wrap:wrap; margin-bottom:20px; }
+  .day-tab{
+    background:var(--panel); border:1px solid var(--line); color:var(--muted);
+    font-family:'Tajawal'; font-size:13px; font-weight:500;
+    padding:9px 16px; border-radius:9px; cursor:pointer; position:relative;
+  }
+  .day-tab.today{ border-color:var(--gold); color:var(--gold-light); }
+  .day-tab.selected{ background:var(--panel-2); color:var(--text); }
+  .day-tab .today-badge{ position:absolute; top:-6px; left:-6px; }
+  .platform-row{ display:flex; flex-direction:column; gap:10px; }
+  .platform{ background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px 18px; display:flex; gap:14px; }
+  .platform .tag{ font-family:'Cairo'; font-weight:700; font-size:12px; color:var(--gold); width:82px; flex-shrink:0; padding-top:1px; }
+  .platform p{ font-size:13.5px; color:var(--text); line-height:1.7; }
+  .tomorrow-note{ margin-top:16px; font-size:12.5px; color:var(--muted); }
+  .tomorrow-note b{ color:var(--gold-light); }
+
+  /* National day timeline */
+  .timeline{ display:flex; flex-direction:column; gap:0; margin-bottom:22px; }
+  .phase{ display:flex; gap:16px; padding-bottom:26px; position:relative; }
+  .phase:last-child{ padding-bottom:0; }
+  .phase-line{ width:2px; background:var(--line); position:absolute; right:9px; top:22px; bottom:0; }
+  .phase:last-child .phase-line{ display:none; }
+  .phase-dot{ width:20px; height:20px; border-radius:50%; background:var(--panel-2); border:2px solid var(--line); flex-shrink:0; display:flex; align-items:center; justify-content:center; z-index:1; }
+  .phase.current .phase-dot{ border-color:var(--gold); background:var(--gold); }
+  .phase-body{ flex:1; }
+  .phase-title{ font-family:'Cairo'; font-weight:700; font-size:15px; }
+  .phase.current .phase-title{ color:var(--gold-light); }
+  .phase-dates{ font-size:12px; color:var(--muted); margin-top:2px; }
+  .phase-desc{ font-size:13px; color:var(--muted); margin-top:6px; line-height:1.7; }
+  .phase-tag{ display:inline-block; font-size:11px; background:var(--gold); color:#0b0b0c; font-weight:700; padding:2px 10px; border-radius:20px; margin-top:8px; }
+
+  .offer-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:6px; }
+  .offer-item{ background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px; text-align:center; }
+  .offer-item .v{ font-family:'Cairo'; font-weight:800; font-size:18px; color:var(--gold-light); }
+  .offer-item .l{ font-size:11.5px; color:var(--muted); margin-top:4px; }
+
+  /* Financial roadmap */
+  .month-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+  .month-card{ background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px; }
+  .month-card.current{ border-color:var(--gold); background:var(--panel-2); }
+  .month-name{ font-size:12.5px; color:var(--muted); }
+  .month-card.current .month-name{ color:var(--gold-light); font-weight:700; }
+  .month-goal{ font-family:'Cairo'; font-weight:800; font-size:20px; margin-top:6px; }
+  .month-budget{ font-size:11.5px; color:var(--muted); margin-top:8px; }
+  .current-flag{ display:flex; align-items:center; gap:6px; font-size:11px; color:var(--gold-light); margin-top:10px; font-weight:700; }
+
+  /* Automation checklist */
+  .check-list{ display:flex; flex-direction:column; gap:10px; }
+  .check-item{ display:flex; align-items:flex-start; gap:12px; background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px 16px; cursor:pointer; transition:.15s; }
+  .check-item:hover{ border-color:#4d4a3f; }
+  .check-item.priority{ border-color:var(--gold); }
+  .checkbox{ width:20px; height:20px; border-radius:6px; border:1.5px solid var(--muted); flex-shrink:0; margin-top:1px; display:flex; align-items:center; justify-content:center; font-size:13px; color:var(--bg); transition:.15s; }
+  .check-item.done .checkbox{ background:var(--gold); border-color:var(--gold); }
+  .check-item.done p{ text-decoration:line-through; color:var(--muted); }
+  .ci-title{ font-size:13.5px; font-weight:500; }
+  .ci-desc{ font-size:12px; color:var(--muted); margin-top:3px; }
+  .priority-flag{ font-size:10.5px; color:var(--gold); font-weight:700; margin-top:4px; }
+
+  @media (max-width: 860px){
+    .app{ flex-direction:column; }
+    .sidebar{ width:100%; height:auto; position:relative; flex-direction:row; overflow-x:auto; padding:16px; align-items:center; }
+    .brand{ margin-bottom:0; margin-left:16px; flex-shrink:0; }
+    .brand-line{ display:none; }
+    nav{ flex-direction:row; }
+    .sidebar-foot{ display:none; }
+    main{ padding:24px 18px; }
+    .stat-row, .team-grid, .month-grid, .offer-grid{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-name">أفكار مودرن</div>
+      <div class="brand-tag">الطاولة واللوحة اللي بتغير جوّ بيتك؟<br>تلاقيها هنا!</div>
+      <div class="brand-line"></div>
+    </div>
+    <nav id="nav"></nav>
+    <div class="sidebar-foot">Afkar Modern — Growth Plan<br>موثّق بالمركز السعودي للأعمال</div>
+  </aside>
+
+  <main>
+    <!-- 0 OVERVIEW -->
+    <section class="section" data-id="overview">
+      <div class="section-head">
+        <div class="eyebrow">نظرة عامة</div>
+        <h1>أهلاً بك في خطة العمل</h1>
+        <p class="sub">كل حاجة محتاج تعرفها عن مهامك وخطة المتجر في مكان واحد — من غير تعقيد.</p>
+      </div>
+      <div class="today-strip"><span class="now-dot"></span> <span id="todayStr"></span></div>
+
+      <div class="stat-row">
+        <div class="stat"><div class="stat-val">7</div><div class="stat-label">أعضاء الفريق</div></div>
+        <div class="stat"><div class="stat-val" id="phaseStat">—</div><div class="stat-label">مرحلة اليوم الوطني الحالية</div></div>
+        <div class="stat"><div class="stat-val" id="dayStat">—</div><div class="stat-label">يوم النهاردة بالتقويم</div></div>
+      </div>
+
+      <div class="goal-card">
+        <div class="label">الهدف المالي لهذا الشهر</div>
+        <div class="amount" id="goalAmount">600,000 ريال</div>
+        <div class="label" id="goalMonth">سبتمبر 2026 — إطلاق اليوم الوطني 96</div>
+        <div class="bar-bg"><div class="bar-fill" style="width:22%"></div></div>
+      </div>
+    </section>
+
+    <!-- 1 TEAM -->
+    <section class="section" data-id="team">
+      <div class="section-head">
+        <div class="eyebrow">فريق العمل</div>
+        <h1>الأدوار والمسؤوليات</h1>
+        <p class="sub">كل عضو يعرف مسؤوليته الأساسية، وإيه المطلوب منه في الأيام الجاية بالتحديد.</p>
+      </div>
+      <div class="team-grid" id="teamGrid"></div>
+    </section>
+
+    <!-- 2 WEEKLY -->
+    <section class="section" data-id="weekly">
+      <div class="section-head">
+        <div class="eyebrow">التقويم الأسبوعي</div>
+        <h1>خطة المحتوى اليومية</h1>
+        <p class="sub">يوم النهاردة متبرز تلقائي — وتحته لمحة سريعة عن مهام بكرة.</p>
+      </div>
+      <div class="day-tabs" id="dayTabs"></div>
+      <div class="platform-row" id="platformRow"></div>
+      <div class="tomorrow-note" id="tomorrowNote"></div>
+    </section>
+
+    <!-- 3 NATIONAL DAY -->
+    <section class="section" data-id="national">
+      <div class="section-head">
+        <div class="eyebrow">حملة اليوم الوطني 96</div>
+        <h1>خارطة الطريق الزمنية</h1>
+        <p class="sub">المرحلة الحالية متبرزة تلقائياً حسب تاريخ النهاردة.</p>
+      </div>
+      <div class="timeline" id="timeline"></div>
+      <div class="card">
+        <div class="eyebrow" style="margin-bottom:12px;">تفاصيل العرض</div>
+        <div class="offer-grid">
+          <div class="offer-item"><div class="v">960 ريال</div><div class="l">باكج لوحات + علاقة عبايات</div></div>
+          <div class="offer-item"><div class="v">KSA96</div><div class="l">كود الخصم</div></div>
+          <div class="offer-item"><div class="v">مجاني</div><div class="l">توصيل لكل المملكة</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 FINANCIAL -->
+    <section class="section" data-id="financial">
+      <div class="section-head">
+        <div class="eyebrow">الخطة المالية</div>
+        <h1>الطريق إلى مليون ريال</h1>
+        <p class="sub">الشهر الحالي أو القادم متبرز — وباقي الأشهر معروضة كخط سير واضح.</p>
+      </div>
+      <div class="month-grid" id="monthGrid"></div>
+    </section>
+
+    <!-- 5 AUTOMATION -->
+    <section class="section" data-id="automation">
+      <div class="section-head">
+        <div class="eyebrow">أتمتة وتقنية</div>
+        <h1>تشيك ليست المتجر</h1>
+        <p class="sub">رتّبناها حسب الأولوية — دوس على أي عنصر لما تخلّصه.</p>
+      </div>
+      <div class="check-list" id="checkList"></div>
+    </section>
+  </main>
+</div>
+
+<script>
+/* ---------- DATA ---------- */
+const sections = [
+  {id:'overview', label:'نظرة عامة'},
+  {id:'team', label:'فريق العمل'},
+  {id:'weekly', label:'التقويم الأسبوعي'},
+  {id:'national', label:'اليوم الوطني 96'},
+  {id:'financial', label:'الخطة المالية'},
+  {id:'automation', label:'الأتمتة والتشيك ليست'},
+];
+
+const team = [
+  {role:'مدير التسويق والنمو', en:'Marketing Manager', desc:'المسؤول الأول عن إدارة الفريق، وضع الخطة، ومتابعة الـ KPIs.', tasks:['متابعة تجهيزات كل الأقسام أسبوعياً','توزيع المهام على ClickUp','مراجعة الأداء العام مقابل الأهداف'], next:'متابعة تجهيزات المرحلة الأولى وتوزيعها على ClickUp قبل دخول مرحلة الإطلاق أول سبتمبر.'},
+  {role:'الميديا باير', en:'Media Buyer', desc:'مسؤول حملات سناب شات وتيك توك وميتا.', tasks:['متابعة الصرف اليومي والـ ROAS','تجربة تحسينات للحملات المنخفضة الأداء','التجهيز لرفع الميزانية مع المواسم'], next:'مراجعة أداء حملات سناب شات الحالية (الصرف انخفض في أغسطس) والتجهيز لرفع الميزانية مع بداية سبتمبر.'},
+  {role:'متخصص السيو', en:'SEO Specialist', desc:'مسؤول المتجر والمدونة والكلمات المفتاحية.', tasks:['إنشاء صفحات وفئات جديدة على سلة','كتابة مقالات مدونة مستهدفة','تحسين الكلمات المفتاحية للموسم'], next:'إنشاء فئة "عروض اليوم الوطني" على سلة وكتابة الـ Title Tag والكلمات المفتاحية المستهدفة فوراً.'},
+  {role:'صانع المحتوى', en:'Content Creator', desc:'مسؤول الإسكربتات وفيديوهات الـ UGC والمحتوى البيعي.', tasks:['كتابة إسكربتات أسبوعية','التنسيق مع المصورين والعملاء','تجهيز محتوى المواسم مبكراً'], next:'تجهيز إسكربتات فيديوهات التشويق لليوم الوطني قبل بداية سبتمبر.'},
+  {role:'الجرافيك والمونتير', en:'Graphic Designer & Video Editor', desc:'مسؤول المونتاج والتصاميم وبنرات سلة.', tasks:['مونتاج فيديوهات السوشيال','تصميم بنرات سلة','تنفيذ الهوية البصرية للحملات'], next:'تصميم بنرات سلة بالألوان الأخضر الزيتي والذهبي الخاصة بحملة اليوم الوطني.'},
+  {role:'أخصائي السوشيال ميديا', en:'Social Media Specialist', desc:'مسؤول النشر اليومي والستوريات والردود.', tasks:['تنفيذ التقويم الأسبوعي يومياً','الرد على تعليقات ورسائل العملاء','متابعة الستوريات والتفاعل'], next:'الاستمرار بالتقويم الأسبوعي العادي + بدء التشويق التدريجي لعرض اليوم الوطني.'},
+  {role:'مستكشف المنتجات', en:'Product Research', desc:'يستكشف يومياً منتجات جديدة ويرشّح الأفضل للمتجر.', tasks:['استكشاف 30 منتج يومياً','ترشيح 3-5 منتجات بطلة','متابعة اتجاهات الديكور والأثاث'], next:'الاستمرار باستكشاف 30 منتج يومياً وترشيح المنتجات المناسبة لباكج اليوم الوطني.'},
+];
+
+const weekDays = [
+  {name:'السبت', platforms:[
+    {tag:'TikTok', text:'فيديو تركيب حقيقي قبل/بعد لوحة كانفس في صالة عميل — "من صالة عادية لصالة تحس فيها بالفخامة ✨"'},
+    {tag:'Instagram', text:'ستوري كواليس التغليف والشحن: "طلبات اليوم جاهزة للتوصيل 📦"'},
+    {tag:'Snapchat', text:'منتج اليوم — صورة أو فيديو قصير للوحة مع السعر والرابط'},
+  ]},
+  {name:'الأحد', platforms:[
+    {tag:'Instagram', text:'Reel ستايل وديكور: 3 أفكار لتنسيق اللوحات فوق الكنبة'},
+    {tag:'TikTok', text:'عرض منتج لوحات تعليق العبايات — "خلصي من فوضى العبايات في 5 ثواني"'},
+    {tag:'Snapchat', text:'سؤال تفاعلي: أي ستايل تفضلون؟ 🖤 ولا 🤎'},
+  ]},
+  {name:'الاثنين', platforms:[
+    {tag:'TikTok', text:'تصوير Macro قريب للتفاصيل البارزة للوحة 3D وجبسية'},
+    {tag:'Instagram', text:'صورة منتج نظيفة بخلفية بيضاء لمجموعة جدارية جديدة'},
+    {tag:'Snapchat', text:'عرض فلاش 24 ساعة — خصم اليوم فقط على اللوحات'},
+  ]},
+  {name:'الثلاثاء', platforms:[
+    {tag:'Instagram', text:'Reel منتج جديد بإضاءة زينة لأحدث تصميم وصل'},
+    {tag:'TikTok', text:'فيديو ريفيو عميل حقيقي صوت وصورة — #ثقة_أكثر_من_30_ألف_عميل'},
+    {tag:'Snapchat', text:'عرض لوحة من فئة أثاث منزلي أو ديكور جداري'},
+  ]},
+  {name:'الأربعاء', platforms:[
+    {tag:'TikTok', text:'تصويت بين تصاميم: اختاري الصح 1، 2، أم 3؟'},
+    {tag:'Instagram', text:'سلايدر مقارنة قبل وبعد لغرفة عميل بالكامل'},
+    {tag:'Snapchat', text:'استفتاء: تفضلون التوصيل السريع ولا العرض الخاص؟'},
+  ]},
+  {name:'الخميس', platforms:[
+    {tag:'كل المنصات', text:'يوم التخفيضات الثابت — ترويج موحد: Reels، ستوريات بعداد تنازلي، وعروض سريعة على سناب شات'},
+  ]},
+  {name:'الجمعة', platforms:[
+    {tag:'Instagram', text:'Reel أفكار هدايا لبيت جديد 🎁'},
+    {tag:'TikTok', text:'فيديو تركيب مظلة سيارة — حماية عملية وشيك من الشمس'},
+    {tag:'Snapchat', text:'صور عمليات التركيب هذا الأسبوع وشكر العملاء'},
+  ]},
+];
+
+const phases = [
+  {title:'المرحلة 1 — التجهيز', dates:'18 - 31 أغسطس', desc:'تجهيز أورجانيك وسيو وبناء الصفحات: مطلوب تجهيز صفحة العروض، مقالات المدونة، ربط الهيدر والفوتر، والبنرات.', start:'2026-08-18', end:'2026-08-31'},
+  {title:'المرحلة 2 — الإطلاق المبكر', dates:'1 - 15 سبتمبر', desc:'إطلاق مبكر وتشويق واستقبال الطلبات الأولى.', start:'2026-09-01', end:'2026-09-15'},
+  {title:'المرحلة 3 — الذروة البيعية', dates:'16 - 25 سبتمبر', desc:'ضخ الميزانية الإعلانية وبرودكاست الواتساب لتحقيق أعلى مبيعات.', start:'2026-09-16', end:'2026-09-25'},
+];
+
+const months = [
+  {name:'سبتمبر 2026 — اليوم الوطني 96', goal:'600,000', budget:'22-25 ألف ريال', start:'2026-09-01', end:'2026-09-30'},
+  {name:'أكتوبر 2026', goal:'680,000', budget:'28-30 ألف ريال', start:'2026-10-01', end:'2026-10-31'},
+  {name:'نوفمبر 2026 — الجمعة البيضاء', goal:'780,000', budget:'35-38 ألف ريال', start:'2026-11-01', end:'2026-11-30'},
+  {name:'ديسمبر 2026 — نهاية السنة', goal:'860,000', budget:'40-42 ألف ريال', start:'2026-12-01', end:'2026-12-31'},
+  {name:'يناير 2027 — الموسم الشتوي', goal:'930,000', budget:'45-48 ألف ريال', start:'2027-01-01', end:'2027-01-31'},
+  {name:'فبراير 2027 — التارجت الكبير', goal:'1,000,000', budget:'50-52 ألف ريال', start:'2027-02-01', end:'2027-02-28'},
+];
+
+const checklist = [
+  {title:'ربط واتساب بالسلات المتروكة', desc:'ربط Salla API بتطبيق واتساب لإرسال تذكير تلقائي بعد 30 دقيقة بكود خصم للتوصيل المجاني.', priority:true},
+  {title:'برنامج أعياد الميلاد والولاء', desc:'جمع تواريخ ميلاد العملاء وإرسال خصم تلقائي 15% بعبارة هدايا أعياد الميلاد.'},
+  {title:'إبراز تقسيط تابي وتمارا', desc:'توضيح خيار تقسيم قيمة الطلب على 4 دفعات على المتجر والسوشيال ميديا.'},
+  {title:'تنظيف هيدر المتجر', desc:'مسح كلمة "تخفيضات" المكررة في هيدر سلة.'},
+  {title:'إعادة تنظيم القوائم', desc:'تنظيم القوائم الـ 12 الحالية إلى 5 أقسام رئيسية مرتبة.'},
+];
+
+/* ---------- HELPERS ---------- */
+const today = new Date();
+const jsDay = today.getDay(); // 0=Sun ... 6=Sat
+const arabicWeekIndex = (jsDay + 1) % 7; // 0=Sat ... 6=Fri
+const dayNamesLong = ['السبت','الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة'];
+
+function fmtDate(d){
+  return d.toLocaleDateString('ar-SA-u-nu-latn', {weekday:'long', year:'numeric', month:'long', day:'numeric'});
+}
+function inRange(d, start, end){
+  const t = d.setHours ? d : new Date(d);
+  return new Date(start) <= today && today <= new Date(end + 'T23:59:59');
+}
+
+/* ---------- BUILD NAV ---------- */
+const nav = document.getElementById('nav');
+sections.forEach((s,i)=>{
+  const btn = document.createElement('button');
+  btn.className = 'nav-btn' + (i===0?' active':'');
+  btn.dataset.target = s.id;
+  btn.innerHTML = `<span class="num">${String(i+1).padStart(2,'0')}</span> ${s.label}`;
+  btn.onclick = ()=>{
+    document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.section').forEach(sec=>sec.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelector(`.section[data-id="${s.id}"]`).classList.add('active');
+  };
+  nav.appendChild(btn);
+});
+document.querySelector('.section[data-id="overview"]').classList.add('active');
+
+/* ---------- OVERVIEW ---------- */
+document.getElementById('todayStr').textContent = 'النهاردة: ' + fmtDate(today);
+document.getElementById('dayStat').textContent = dayNamesLong[arabicWeekIndex];
+
+const currentPhase = phases.find(p=>inRange(today,p.start,p.end));
+document.getElementById('phaseStat').textContent = currentPhase ? currentPhase.title.split('—')[0].trim() : 'قبل الانطلاق';
+
+const currentMonth = months.find(m=>inRange(today,m.start,m.end)) || months[0];
+document.getElementById('goalAmount').textContent = currentMonth.goal + ' ريال';
+document.getElementById('goalMonth').textContent = currentMonth.name;
+
+/* ---------- TEAM ---------- */
+const teamGrid = document.getElementById('teamGrid');
+team.forEach(m=>{
+  const card = document.createElement('div');
+  card.className = 'team-card';
+  card.innerHTML = `
+    <div class="role">${m.role}</div>
+    <div class="role-en">${m.en}</div>
+    <div class="desc">${m.desc}</div>
+    <ul>${m.tasks.map(t=>`<li>${t}</li>`).join('')}</ul>
+    <div class="next-box">
+      <div class="title"><span class="now-dot"></span> الأيام الجاية</div>
+      <p>${m.next}</p>
+    </div>`;
+  teamGrid.appendChild(card);
+});
+
+/* ---------- WEEKLY ---------- */
+const dayTabs = document.getElementById('dayTabs');
+const platformRow = document.getElementById('platformRow');
+const tomorrowNote = document.getElementById('tomorrowNote');
+
+function renderDay(idx){
+  document.querySelectorAll('.day-tab').forEach(t=>t.classList.remove('selected'));
+  document.querySelector(`.day-tab[data-idx="${idx}"]`).classList.add('selected');
+  platformRow.innerHTML = weekDays[idx].platforms.map(p=>`
+    <div class="platform"><div class="tag">${p.tag}</div><p>${p.text}</p></div>
+  `).join('');
+  const tmrw = weekDays[(idx+1)%7];
+  tomorrowNote.innerHTML = `<span class="now-dot"></span> استعدوا لـ <b>بكرة (${tmrw.name})</b>: ${tmrw.platforms[0].text}`;
+}
+
+weekDays.forEach((d,i)=>{
+  const tab = document.createElement('button');
+  tab.className = 'day-tab' + (i===arabicWeekIndex ? ' today' : '');
+  tab.dataset.idx = i;
+  tab.innerHTML = d.name + (i===arabicWeekIndex ? ' <span class="now-dot today-badge"></span>' : '');
+  tab.onclick = ()=> renderDay(i);
+  dayTabs.appendChild(tab);
+});
+renderDay(arabicWeekIndex);
+
+/* ---------- NATIONAL DAY TIMELINE ---------- */
+const timeline = document.getElementById('timeline');
+phases.forEach(p=>{
+  const isCurrent = inRange(today, p.start, p.end);
+  const div = document.createElement('div');
+  div.className = 'phase' + (isCurrent ? ' current' : '');
+  div.innerHTML = `
+    <div style="position:relative;">
+      <div class="phase-dot"></div>
+      <div class="phase-line"></div>
+    </div>
+    <div class="phase-body">
+      <div class="phase-title">${p.title}</div>
+      <div class="phase-dates">${p.dates}</div>
+      <div class="phase-desc">${p.desc}</div>
+      ${isCurrent ? '<span class="phase-tag">جارية الآن</span>' : ''}
+    </div>`;
+  timeline.appendChild(div);
+});
+
+/* ---------- FINANCIAL ---------- */
+const monthGrid = document.getElementById('monthGrid');
+months.forEach(m=>{
+  const isCurrent = m === currentMonth;
+  const div = document.createElement('div');
+  div.className = 'month-card' + (isCurrent ? ' current' : '');
+  div.innerHTML = `
+    <div class="month-name">${m.name}</div>
+    <div class="month-goal">${m.goal} ريال</div>
+    <div class="month-budget">ميزانية الإعلانات: ${m.budget}</div>
+    ${isCurrent ? '<div class="current-flag"><span class="now-dot"></span> الشهر الحالي</div>' : ''}
+  `;
+  monthGrid.appendChild(div);
+});
+
+/* ---------- AUTOMATION CHECKLIST ---------- */
+const checkList = document.getElementById('checkList');
+checklist.forEach((c,i)=>{
+  const div = document.createElement('div');
+  div.className = 'check-item' + (c.priority ? ' priority' : '');
+  div.innerHTML = `
+    <div class="checkbox">✓</div>
+    <div>
+      <div class="ci-title">${c.title}</div>
+      <div class="ci-desc">${c.desc}</div>
+      ${c.priority ? '<div class="priority-flag">أولوية قصوى الآن</div>' : ''}
+    </div>`;
+  div.onclick = ()=> div.classList.toggle('done');
+  checkList.appendChild(div);
+});
+</script>
+</body>
+</html>
