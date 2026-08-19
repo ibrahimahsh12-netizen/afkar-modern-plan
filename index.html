@@ -1,4 +1,3 @@
-<!-- v2 -->
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -140,8 +139,31 @@
   .platform{ background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px 18px; display:flex; gap:14px; }
   .platform .tag{ font-family:'Cairo'; font-weight:700; font-size:12px; color:var(--gold); width:82px; flex-shrink:0; padding-top:1px; }
   .platform p{ font-size:13.5px; color:var(--text); line-height:1.7; }
+  .platform-body{ flex:1; display:flex; flex-direction:column; gap:8px; }
+  .platform-body .idea{ font-size:13.5px; color:var(--text); line-height:1.7; }
+  .platform-body .caption{ font-size:13px; color:var(--gold-light); line-height:1.7; background:var(--panel-2); border-radius:8px; padding:8px 12px; }
+  .platform-body .hashtags{ font-size:12px; color:var(--muted); direction:ltr; text-align:right; }
   .tomorrow-note{ margin-top:16px; font-size:12.5px; color:var(--muted); }
   .tomorrow-note b{ color:var(--gold-light); }
+  .notes-card{ margin-top:24px; }
+  .notes-list{ list-style:none; display:flex; flex-direction:column; gap:10px; }
+  .notes-list li{ font-size:13px; color:var(--muted); line-height:1.8; padding-right:16px; position:relative; }
+  .notes-list li::before{ content:"—"; position:absolute; right:0; color:var(--gold); }
+  .chip-list{ display:flex; flex-wrap:wrap; gap:8px; }
+  .chip{ background:var(--panel-2); border:1px solid var(--line); border-radius:20px; padding:7px 15px; font-size:12.5px; color:var(--gold-light); }
+
+  .service-card{ position:relative; padding-top:26px; }
+  .service-badge{ position:absolute; top:20px; left:22px; background:var(--gold); color:#0b0b0c; font-family:'Cairo'; font-weight:700; font-size:11px; padding:4px 13px; border-radius:20px; }
+  .service-lead{ font-size:13.5px; color:var(--text); line-height:1.85; margin-bottom:18px; }
+  .service-columns{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  .service-col-title{ font-family:'Cairo'; font-weight:700; font-size:13px; color:var(--gold-light); margin-bottom:10px; }
+  .risk-box{ background:rgba(190,70,70,0.09); border:1px solid rgba(210,90,90,0.35); border-radius:10px; padding:14px 16px; margin-bottom:10px; }
+  .risk-label{ font-family:'Cairo'; font-weight:700; color:#e08a8a; font-size:13px; margin-bottom:6px; }
+  .risk-box p{ font-size:13px; color:var(--muted); line-height:1.8; }
+  .solution-box{ background:rgba(80,140,90,0.09); border:1px solid rgba(100,160,110,0.35); border-radius:10px; padding:14px 16px; }
+  .solution-label{ font-family:'Cairo'; font-weight:700; color:#8bcc9a; font-size:13px; margin-bottom:6px; }
+  .solution-box p{ font-size:13px; color:var(--muted); line-height:1.8; }
+  .quote-box{ background:var(--panel-2); border-right:2px solid var(--gold); border-radius:8px; padding:13px 16px; font-size:12.5px; color:var(--gold-light); line-height:1.85; }
 
   /* National day timeline */
   .timeline{ display:flex; flex-direction:column; gap:0; margin-bottom:22px; }
@@ -165,6 +187,41 @@
 
   /* Financial roadmap */
   .month-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+
+  .perf-card{ margin-top:14px; }
+  .perf-title{ font-family:'Cairo'; font-weight:700; font-size:17px; color:var(--text); }
+  .perf-list{ display:flex; flex-direction:column; gap:20px; }
+  .perf-row{}
+  .perf-head{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px; }
+  .perf-month{ font-family:'Cairo'; font-weight:700; font-size:13.5px; color:var(--text); }
+  .perf-total{ font-family:'Cairo'; font-weight:700; font-size:14px; color:var(--gold-light); }
+  .perf-bar-bg{ height:12px; background:var(--panel-2); border-radius:7px; overflow:hidden; position:relative; }
+  .perf-bar-fill{ height:100%; background:rgba(201,164,76,0.22); border-radius:7px; position:relative; }
+  .perf-bar-snap{ height:100%; background:linear-gradient(to left, var(--gold), var(--gold-light)); border-radius:7px; }
+  .perf-meta{ display:flex; justify-content:space-between; font-size:11.5px; color:var(--muted); margin-top:7px; }
+  .perf-meta b{ color:var(--gold-light); font-weight:600; }
+  .perf-legend{ display:flex; gap:18px; font-size:11.5px; color:var(--muted); margin-bottom:16px; }
+  .perf-legend span{ display:flex; align-items:center; gap:6px; }
+  .perf-legend .dot{ width:9px; height:9px; border-radius:3px; display:inline-block; }
+
+  .products-card{ margin-top:14px; }
+  .product-rank-list{ display:flex; flex-direction:column; gap:18px; }
+  .product-rank-row{ display:flex; align-items:flex-start; gap:14px; }
+  .rank-badge{ width:30px; height:30px; border-radius:50%; background:var(--panel-2); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; font-family:'Cairo'; font-weight:800; font-size:13px; color:var(--gold-light); flex-shrink:0; margin-top:2px; }
+  .product-rank-row:first-child .rank-badge{ background:var(--gold); color:#0b0b0c; border-color:var(--gold); }
+  .product-rank-body{ flex:1; }
+  .product-rank-head{ display:flex; justify-content:space-between; gap:10px; margin-bottom:8px; }
+  .product-rank-name{ font-size:13.5px; color:var(--text); font-weight:500; line-height:1.5; }
+  .product-rank-sales{ font-family:'Cairo'; font-weight:700; font-size:13.5px; color:var(--gold-light); white-space:nowrap; }
+  .product-rank-bar-bg{ height:8px; background:var(--panel-2); border-radius:5px; overflow:hidden; }
+  .product-rank-bar-fill{ height:100%; background:linear-gradient(to left, var(--gold), var(--gold-light)); border-radius:5px; }
+  .product-rank-orders{ font-size:11.5px; color:var(--muted); margin-top:6px; }
+
+  .pillar-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:18px; }
+  .pillar-card{ background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:20px; }
+  .pillar-icon{ font-size:22px; margin-bottom:10px; }
+  .pillar-title{ font-family:'Cairo'; font-weight:700; font-size:14px; color:var(--gold-light); margin-bottom:8px; line-height:1.5; }
+  .pillar-desc{ font-size:12.5px; color:var(--muted); line-height:1.8; }
   .month-card{ background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px; }
   .month-card.current{ border-color:var(--gold); background:var(--panel-2); }
   .month-name{ font-size:12.5px; color:var(--muted); }
@@ -193,7 +250,9 @@
     nav{ flex-direction:row; }
     .sidebar-foot{ display:none; }
     main{ padding:24px 18px; }
-    .stat-row, .team-grid, .month-grid, .offer-grid{ grid-template-columns:1fr; }
+    .stat-row, .team-grid, .month-grid, .offer-grid, .service-columns, .pillar-grid{ grid-template-columns:1fr; }
+    .service-badge{ position:static; display:inline-block; margin-bottom:10px; }
+    .service-card{ padding-top:20px; }
   }
 </style>
 </head>
@@ -214,9 +273,9 @@
     <!-- 0 OVERVIEW -->
     <section class="section" data-id="overview">
       <div class="section-head">
-        <div class="eyebrow">نظرة عامة</div>
-        <h1>أهلاً بك في خطة العمل</h1>
-        <p class="sub">كل حاجة محتاج تعرفها عن مهامك وخطة المتجر في مكان واحد — من غير تعقيد.</p>
+        <div class="eyebrow">الهدف والرؤية الشاملة</div>
+        <h1>من إدارة تقليدية إلى نمو مالي منظّم</h1>
+        <p class="sub">نقل متجر أفكار مودرن من "إدارة العمليات التسويقية التقليدية" إلى نظام نمو مالي متسارع ومنظّم — بإدارة وتوجيه الفريق الحالي بكفاءة، وسد ثغرات المبيعات المفقودة، للوصول بالمبيعات لـ 600,000 ريال في سبتمبر (موسم اليوم الوطني 96)، والتدرج بخطة مرحلية لمليون ريال شهريًا خلال 6 أشهر.</p>
       </div>
       <div class="today-strip"><span class="now-dot"></span> <span id="todayStr"></span></div>
 
@@ -231,6 +290,29 @@
         <div class="amount" id="goalAmount">600,000 ريال</div>
         <div class="label" id="goalMonth">سبتمبر 2026 — إطلاق اليوم الوطني 96</div>
         <div class="bar-bg"><div class="bar-fill" style="width:22%"></div></div>
+      </div>
+
+      <div class="section-head" style="margin-top:36px;">
+        <div class="eyebrow">فلسفة الإدارة</div>
+        <h1 style="font-size:20px;">3 أركان لضمان النمو والشفافية</h1>
+        <p class="sub">عشان نحقق التوسع المالي المطلوب بأعلى درجات الشفافية، استراتيجيتنا الإدارية قائمة على 3 أركان رئيسية.</p>
+      </div>
+      <div class="pillar-grid">
+        <div class="pillar-card">
+          <div class="pillar-icon">🎯</div>
+          <div class="pillar-title">المرجعية والمسؤولية الموحدة</div>
+          <p class="pillar-desc">إدارة التسويق تشتغل كـ"مايسترو" يربط كل أفراد الفريق — الميديا باير، السيو، الكونتنت، الديزاينر، ومستكشف المنتجات — عشان كل تاسك يصب مباشرة في زيادة المبيعات.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">💻</div>
+          <div class="pillar-title">البورتال الإداري المخصص</div>
+          <p class="pillar-desc">إدارة العمليات وتوزيع مهام الفريق بالكامل من خلال بورتال إداري خاص ومطوّر، يديك صلاحية متابعة حالة المهام، جودة المخرجات، وتقارير الأداء والأرقام لحظيًا وبشفافية تامة من غير أي تشتيت.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">📈</div>
+          <div class="pillar-title">النمو القائم على داتا العملاء</div>
+          <p class="pillar-desc">استغلال الكتالوج الحالي (5,000 منتج) عبر إعلانات الكتالوج الديناميكية (DPA)، وتنشيط داتا العملاء السابقين عبر أتمتة الواتساب — لرفع معدل الشراء المتكرر من غير ما نزوّد ميزانية الإعلانات.</p>
+        </div>
       </div>
     </section>
 
@@ -247,13 +329,85 @@
     <!-- 2 WEEKLY -->
     <section class="section" data-id="weekly">
       <div class="section-head">
-        <div class="eyebrow">التقويم الأسبوعي</div>
-        <h1>خطة المحتوى اليومية</h1>
-        <p class="sub">يوم النهاردة متبرز تلقائي — وتحته لمحة سريعة عن مهام بكرة.</p>
+        <div class="eyebrow">رود ماب السوشيال ميديا والكونتنت</div>
+        <h1>خطة المحتوى الأسبوعية</h1>
+        <p class="sub">يوم النهاردة متبرز تلقائي — الأفكار والكابشنات جاهزة للتنفيذ على طول باللهجة السعودية.</p>
       </div>
       <div class="day-tabs" id="dayTabs"></div>
       <div class="platform-row" id="platformRow"></div>
       <div class="tomorrow-note" id="tomorrowNote"></div>
+
+      <div class="card notes-card">
+        <div class="eyebrow" style="margin-bottom:12px;">ملاحظات تنفيذية مهمة</div>
+        <ul class="notes-list">
+          <li>كل بوست لازم يكون فيه Call to Action واضح — "اطلب من اللينك"، "اكتب في الكومنت"، "سيّف البوست" — مو بس عرض منتج وخلاص.</li>
+          <li>الـ Stories اليومية على انستقرام تقدر تكرر فيها أفكار الـ TikTok والـ Snapchat بشكل مختصر، ما فيه داعي تسوي محتوى جديد من الصفر لكل منصة.</li>
+          <li>حدّث الـ Highlights على انستقرام بحيث كل فئة (كانفس، عبايات، 3D، مظلات) لها هايلايت ثابت، عشان اللي يدخل بروفايلكم لأول مرة يلقى كل شي منظم.</li>
+          <li>اطلب من العملاء الراضين يرسلون صورة/فيديو للوحة في بيتهم — هذا أرخص وأقوى محتوى ممكن تحصل عليه.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3.5 SEO ROADMAP -->
+    <section class="section" data-id="seo">
+      <div class="section-head">
+        <div class="eyebrow">رود ماب السيو</div>
+        <h1>خطة السيو والمحتوى لليوم الوطني 96</h1>
+        <p class="sub">من الفكرة للتنفيذ — صفحة الهبوط، الكلمات المفتاحية، والمقالات جاهزة تتنفذ فوراً.</p>
+      </div>
+
+      <div class="card">
+        <div class="eyebrow" style="margin-bottom:12px;">صفحة الهبوط (Landing Page)</div>
+        <p style="font-size:13.5px; color:var(--text); line-height:1.8; margin-bottom:10px;">
+          إنشاء فئة جديدة على سلة فوراً برابط دائم زي: <b style="color:var(--gold-light);">afkar-modern.com/national-day-offers</b>
+        </p>
+        <p style="font-size:13px; color:var(--muted); line-height:1.8;">
+          عنوان الصفحة (Title Tag): "عروض اليوم الوطني 96 على اللوحات والديكور والأثاث | متجر أفكار مودرن"
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="eyebrow" style="margin-bottom:12px;">الكلمات المفتاحية المستهدفة</div>
+        <div class="chip-list">
+          <span class="chip">عروض اليوم الوطني 96 ديكورات</span>
+          <span class="chip">خصومات اليوم الوطني لوحات جدارية</span>
+          <span class="chip">تخفيضات أثاث اليوم الوطني السعودي 2026</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="eyebrow" style="margin-bottom:12px;">مقالات المدونة المطلوبة فوراً</div>
+        <ul class="notes-list">
+          <li>أفضل عروض اليوم الوطني 96 لتجديد ديكور صالتك ومجلسك</li>
+          <li>دليل اختيار لوحات المجالس الفخمة في اليوم الوطني</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="eyebrow" style="margin-bottom:12px;">الربط الداخلي (Internal Linking)</div>
+        <p style="font-size:13.5px; color:var(--muted); line-height:1.8;">
+          لازم رابط صفحة عروض اليوم الوطني يتحط في القائمة الرئيسية (Header Menu) وفي الفوتر، عشان الـ Link Juice والترتيب في جوجل يوصلها بسرعة.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="eyebrow" style="margin-bottom:12px;">استراتيجية العروض والأسعار</div>
+        <div class="offer-grid">
+          <div class="offer-item"><div class="v">960 ريال</div><div class="l">باكج لوحات + علاقة عبايات بدل 1,300 ريال</div></div>
+          <div class="offer-item"><div class="v">خصم 96 ريال</div><div class="l">فوق 650 ريال — كود KSA96 أو وطن96</div></div>
+          <div class="offer-item"><div class="v">توصيل مجاني</div><div class="l">لكل مناطق المملكة بمناسبة اليوم الوطني</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="eyebrow" style="margin-bottom:12px;">الهوية البصرية وبنرات المتجر</div>
+        <ul class="notes-list">
+          <li>3 بنرات بمقاسات سلة بالألوان الوطنية: الأخضر الزيتي الفاخر + الذهبي + الأبيض</li>
+          <li>استخدام عبارات زي: "نعتز بفخامة منازلنا | عروض اليوم الوطني 96"</li>
+          <li>قوالب إعلانات خاصة لسناب شات وإنستجرام وتيك توك بشريط اليوم الوطني من غير ما يغطي على المنتج</li>
+          <li>عرض المنتجات داخل تصاميم لمجالس سعودية فخمة بلمسات القهوة السعودية والديكور النجدي</li>
+        </ul>
+      </div>
     </section>
 
     <!-- 3 NATIONAL DAY -->
@@ -277,11 +431,26 @@
     <!-- 4 FINANCIAL -->
     <section class="section" data-id="financial">
       <div class="section-head">
-        <div class="eyebrow">الخطة المالية</div>
+        <div class="eyebrow">تحليل سريع</div>
         <h1>الطريق إلى مليون ريال</h1>
         <p class="sub">الشهر الحالي أو القادم متبرز — وباقي الأشهر معروضة كخط سير واضح.</p>
       </div>
-      <div class="month-grid" id="monthGrid"></div>
+      <div class="card products-card">
+        <div class="eyebrow" style="margin-bottom:4px;">الأكثر مبيعًا</div>
+        <h2 class="perf-title">أفضل المنتجات مبيعًا</h2>
+        <p class="sub" style="margin:6px 0 20px;">أعلى 4 منتجات من حيث عدد الطلبات وإجمالي المبيعات.</p>
+        <div class="product-rank-list" id="productRankList"></div>
+      </div>
+
+      <div class="card perf-card">
+        <div class="eyebrow" style="margin-bottom:4px;">الأداء الفعلي 2026</div>
+        <h2 class="perf-title">مبيعات المتجر مقابل سناب شات</h2>
+        <p class="sub" style="margin:6px 0 22px;">كل شهر بيوضح إجمالي مبيعات سلة، ونسبة اللي جايه من سناب شات تحديدًا.</p>
+
+        <div class="stat-row" id="perfSummary" style="margin-bottom:24px;"></div>
+
+        <div class="perf-list" id="perfList"></div>
+      </div>
     </section>
 
     <!-- 5 AUTOMATION -->
@@ -289,9 +458,60 @@
       <div class="section-head">
         <div class="eyebrow">أتمتة وتقنية</div>
         <h1>تشيك ليست المتجر</h1>
-        <p class="sub">رتّبناها حسب الأولوية — دوس على أي عنصر لما تخلّصه.</p>
+        <p class="sub">خدمتين جاهزتين للعرض على العميل مباشرة.</p>
       </div>
-      <div class="check-list" id="checkList"></div>
+
+      <div class="card service-card">
+        <div class="service-badge">خدمة مقترحة 1</div>
+        <div class="eyebrow" style="margin-bottom:10px;">تفعيل قاعدة بيانات العملاء (CRM Sheet)</div>
+        <p class="service-lead">من خلال متابعة وإدارة مبيعات المتجر (اللي بحمد الله بتتجاوز 500 ألف ريال شهرياً)، إحنا بنجيب عملاء جدد باستمرار — لكن عندنا أصل خفي وثروة غير مستغلة: بيانات كل العملاء اللي اشتروا من المتجر من يوم ما بدأ. خطتنا نبني شيت قاعدة بيانات شامل (CRM) ونستغلها في اتجاهين.</p>
+
+        <div class="service-columns">
+          <div class="service-col">
+            <div class="service-col-title">1 — مبيعات مجانية (0 ريال تكلفة إعلانية)</div>
+            <ul class="notes-list">
+              <li>معايدات ورسائل مخصصة للعملاء في المناسبات (رمضان، الأعياد، اليوم الوطني) — بتعزز ثقة العميل وولاءه، فيكون البراند خياره الأول لما يجدد بيته أو يرشح حد من معارفه</li>
+              <li>عروض حصرية على أثاث وديكور مكمّل للعملاء القدامى — مبيعات مباشرة بدون صرف ريال واحد على إعلانات ممولة</li>
+            </ul>
+          </div>
+          <div class="service-col">
+            <div class="service-col-title">2 — تحسين نتائج الإعلانات الحالية</div>
+            <ul class="notes-list">
+              <li>رفع الداتا على منصات الإعلانات لاستهداف جماهير مشابهة (Lookalike Audiences) لعملائنا الحاليين</li>
+              <li>بينزل تكلفة الإعلان ويجيب عملاء جدد بقوة شرائية عالية</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="next-box" style="margin-top:14px;">
+          <div class="title"><span class="now-dot"></span> الخطوة العملية</div>
+          <p>بدل ما نسيب البيانات خاملة في سلة، نبدأ نسحب وننظّف البيانات ونبني الشيت، ونجهز أول حملة معايدة أو عرض مخصص للعملاء المميزين عشان نقيس العائد المباشر منها فورًا.</p>
+        </div>
+
+        <div class="quote-box" style="margin-top:14px;">
+          "إحنا عايزين نعمل مصنع مبيعات من الداتا القديمة بتكلفة إرسال بسيطة جداً وبدون ميزانيات إعلانية ضخمة. أي طلب بييجي من رسائل الداتا دي هو صافي ربح عالي، لأن تكلفة الاستحواذ عليه (CAC) تعتبر صفر مقارنة بإعلانات منصات التواصل."
+        </div>
+      </div>
+
+      <div class="card service-card">
+        <div class="service-badge">خدمة مقترحة 2</div>
+        <div class="eyebrow" style="margin-bottom:10px;">نظام الإنذار المبكر لتأخر الطلبات (SLA Tracker)</div>
+        <p class="service-lead">نظام المتابعة الاستباقي اللي هنبنيه مش بس بيهدف لزيادة المبيعات — الأهم إنه بيحمي المتجر من الإغلاق وتجميد الأرصدة.</p>
+
+        <div class="risk-box">
+          <div class="risk-label">🔴 الخطر</div>
+          <p>ارتفاع معدل شكاوى التأخير ممكن يودّي لتدخل وزارة التجارة، تجميد الحسابات المالية عند تابي وتمارا، أو إيقاف المتجر بالكامل على منصة سلة — لأن بوابات الدفع بتراقب معدل الشكاوى واسترداد الأموال (Chargeback Rate) عن قرب.</p>
+        </div>
+        <div class="solution-box">
+          <div class="solution-label">🟢 الحل</div>
+          <p>بناء نظام إنذار مبكر (SLA Tracker): تتبع آلي للطلبات المتأخرة، وتواصل استباقي مع العميل لاحتواء المشكلة وحلها ودياً على الواتساب قبل ما تتصعّد لشكوى رسمية.</p>
+        </div>
+
+        <div class="quote-box" style="margin-top:14px;">
+          "منصة سلة، وبوابات الدفع، ووزارة التجارة يراقبون عن كثب معدل الشكاوى وتأخير الطلبات. لما نصطاد الطلب المتأخر عبر الشيت ونبادر إحنا بمراسلة العميل والاعتذار له، بنقتل الشكوى في مهدها ونحل المشكلة قبل ما تهدد استقرار البزنس."
+        </div>
+      </div>
+
     </section>
   </main>
 </div>
@@ -301,14 +521,15 @@
 const sections = [
   {id:'overview', label:'نظرة عامة'},
   {id:'team', label:'فريق العمل'},
-  {id:'weekly', label:'التقويم الأسبوعي'},
+  {id:'weekly', label:'رود ماب السوشيال والكونتنت'},
+  {id:'seo', label:'رود ماب السيو'},
   {id:'national', label:'اليوم الوطني 96'},
-  {id:'financial', label:'الخطة المالية'},
+  {id:'financial', label:'تحليل سريع'},
   {id:'automation', label:'الأتمتة والتشيك ليست'},
 ];
 
 const team = [
-  {role:'مدير التسويق والنمو', en:'Marketing Manager', desc:'المسؤول الأول عن إدارة الفريق، وضع الخطة، ومتابعة الـ KPIs.', tasks:['متابعة تجهيزات كل الأقسام أسبوعياً','توزيع المهام على ClickUp','مراجعة الأداء العام مقابل الأهداف'], next:'متابعة تجهيزات المرحلة الأولى وتوزيعها على ClickUp قبل دخول مرحلة الإطلاق أول سبتمبر.'},
+  {role:'مدير التسويق والنمو', en:'Marketing Manager', desc:'المسؤول الأول عن إدارة الفريق، وضع الخطة، ومتابعة الـ KPIs.', tasks:['متابعة تجهيزات كل الأقسام أسبوعياً','توزيع المهام على بورتال المتابعة','مراجعة الأداء العام مقابل الأهداف'], next:'متابعة تجهيزات المرحلة الأولى وتوزيعها على بورتال المتابعة قبل دخول مرحلة الإطلاق أول سبتمبر.'},
   {role:'الميديا باير', en:'Media Buyer', desc:'مسؤول حملات سناب شات وتيك توك وميتا.', tasks:['متابعة الصرف اليومي والـ ROAS','تجربة تحسينات للحملات المنخفضة الأداء','التجهيز لرفع الميزانية مع المواسم'], next:'مراجعة أداء حملات سناب شات الحالية (الصرف انخفض في أغسطس) والتجهيز لرفع الميزانية مع بداية سبتمبر.'},
   {role:'متخصص السيو', en:'SEO Specialist', desc:'مسؤول المتجر والمدونة والكلمات المفتاحية.', tasks:['إنشاء صفحات وفئات جديدة على سلة','كتابة مقالات مدونة مستهدفة','تحسين الكلمات المفتاحية للموسم'], next:'إنشاء فئة "عروض اليوم الوطني" على سلة وكتابة الـ Title Tag والكلمات المفتاحية المستهدفة فوراً.'},
   {role:'صانع المحتوى', en:'Content Creator', desc:'مسؤول الإسكربتات وفيديوهات الـ UGC والمحتوى البيعي.', tasks:['كتابة إسكربتات أسبوعية','التنسيق مع المصورين والعملاء','تجهيز محتوى المواسم مبكراً'], next:'تجهيز إسكربتات فيديوهات التشويق لليوم الوطني قبل بداية سبتمبر.'},
@@ -319,37 +540,39 @@ const team = [
 
 const weekDays = [
   {name:'السبت', platforms:[
-    {tag:'TikTok', text:'فيديو تركيب حقيقي قبل/بعد لوحة كانفس في صالة عميل — "من صالة عادية لصالة تحس فيها بالفخامة ✨"'},
-    {tag:'Instagram', text:'ستوري كواليس التغليف والشحن: "طلبات اليوم جاهزة للتوصيل 📦"'},
-    {tag:'Snapchat', text:'منتج اليوم — صورة أو فيديو قصير للوحة مع السعر والرابط'},
+    {tag:'TikTok', idea:'فيديو تركيب حقيقي — قبل/بعد لوحة كانفس في صالة عميل', caption:'من صالة عادية لصالة تحس فيها بالفخامة ✨ لوحة [اسم المنتج] متوفرة عندنا الحين 🖤', hashtags:'#لوحات_جدارية #ديكور_منزلي #لوحات_كانفس'},
+    {tag:'Instagram', idea:'Story — كواليس التغليف والشحن', caption:'طلبات اليوم جاهزة للتوصيل 📦'},
+    {tag:'Snapchat', idea:'منتج اليوم — صورة/فيديو قصير للوحة مع السعر مباشرة', caption:'اطلبها من اللينك 👇'},
   ]},
   {name:'الأحد', platforms:[
-    {tag:'Instagram', text:'Reel ستايل وديكور: 3 أفكار لتنسيق اللوحات فوق الكنبة'},
-    {tag:'TikTok', text:'عرض منتج لوحات تعليق العبايات — "خلصي من فوضى العبايات في 5 ثواني"'},
-    {tag:'Snapchat', text:'سؤال تفاعلي: أي ستايل تفضلون؟ 🖤 ولا 🤎'},
+    {tag:'Instagram', idea:'Reel ستايل وديكور — 3 أفكار تنسيقين اللوحات فوق الكنبة', caption:'ما تعرفين تنسقين لوحاتك؟ جربي الأفكار هذي 👆 سيفي البوست عشان ترجعين له وقت التنفيذ'},
+    {tag:'TikTok', idea:'عرض منتج — لوحة تعليق العبايات وهي شغّالة فعلًا في غرفة الكابشن', caption:'خلصي من فوضى العبايات في 5 ثواني 😍 عندنا كذا لون متوفر'},
+    {tag:'Snapchat', idea:'سؤال تفاعلي', caption:'أي ستايل تفضلون؟ 🖤 ولا 🤎'},
   ]},
   {name:'الاثنين', platforms:[
-    {tag:'TikTok', text:'تصوير Macro قريب للتفاصيل البارزة للوحة 3D وجبسية'},
-    {tag:'Instagram', text:'صورة منتج نظيفة بخلفية بيضاء لمجموعة جدارية جديدة'},
-    {tag:'Snapchat', text:'عرض فلاش 24 ساعة — خصم اليوم فقط على اللوحات'},
+    {tag:'TikTok', idea:'لوحات 3D — فيديو بطيء، تصوير قريب (macro) للتفاصيل البارزة في اللوحة الجبسية/3D', caption:'تفاصيل تحسها بإيدك مو بس بعينك 🤍 لوحات فنية جبسية أصلية 100%'},
+    {tag:'Instagram', idea:'Feed Post — صورة منتج نظيفة بخلفية بيضة لمجموعة جدارية جديدة', caption:'مجموعة [اسم المجموعة] وصلت 🎨 اطلبيها من اللينك في البايو'},
+    {tag:'Snapchat', idea:'عرض فلاش (24 ساعة)', caption:'خصم اليوم بس على لوحات الكانفس ⏰ العرض ينتهي الساعة 12 بالليل'},
   ]},
   {name:'الثلاثاء', platforms:[
-    {tag:'Instagram', text:'Reel منتج جديد بإضاءة زينة لأحدث تصميم وصل'},
-    {tag:'TikTok', text:'فيديو ريفيو عميل حقيقي صوت وصورة — #ثقة_أكثر_من_30_ألف_عميل'},
-    {tag:'Snapchat', text:'عرض لوحة من فئة أثاث منزلي أو ديكور جداري'},
+    {tag:'Instagram', idea:'Reel منتج جديد — عرض احترافي بإضاءة زينة لأحدث تصميم وصل', caption:'جديدنا وصل 🔥 إيش رأيكم في التصميم هذا؟'},
+    {tag:'TikTok', idea:'ريفيو عميل حقيقي — فويس أوفر أو مقطع من عميل يتكلم عن تجربته', caption:'مو إحنا اللي نقول، عملاؤنا يقولون 🖤', hashtags:'#ثقة_40_الف_عميل'},
+    {tag:'Snapchat', idea:'منتج اليوم — عرض لوحة من فئة "أثاث منزلي" أو ديكور جداري'},
   ]},
   {name:'الأربعاء', platforms:[
-    {tag:'TikTok', text:'تصويت بين تصاميم: اختاري الصح 1، 2، أم 3؟'},
-    {tag:'Instagram', text:'سلايدر مقارنة قبل وبعد لغرفة عميل بالكامل'},
-    {tag:'Snapchat', text:'استفتاء: تفضلون التوصيل السريع ولا العرض الخاص؟'},
+    {tag:'TikTok', idea:'تنويع منتجات — فورمات "اختاري الصح" يعرض 3-4 أحجام/ألوان من نفس اللوحة', caption:'أي وحدة بتختارين؟ 1، 2، ولا 3؟ 👇 اكتبي رقمك في الكومنت'},
+    {tag:'Instagram', idea:'Carousel (سلايدر) — مقارنة "قبل وبعد" لغرفة عميل بالكامل', caption:'سحبي شوفي الفرق 👉 التحول هذا بلوحة وحدة بس'},
+    {tag:'Snapchat', idea:'تفاعل مباشر — استفتاء سريع (تمهيدًا لعرض الخميس)', caption:'تفضلون التوصيل السريع ولا العرض الخاص؟'},
   ]},
   {name:'الخميس', platforms:[
-    {tag:'كل المنصات', text:'يوم التخفيضات الثابت — ترويج موحد: Reels، ستوريات بعداد تنازلي، وعروض سريعة على سناب شات'},
+    {tag:'TikTok', idea:'يوم التخفيضات الثابت', caption:'يوم الخميس = يوم التخفيضات 🔴 خصومات على لوحات مختارة، اللينك في البايو'},
+    {tag:'Instagram', idea:'Reel — عرض سريع لأكثر 3 منتجات مطلوبة مع أسعارها بعد الخصم', caption:'Story: عداد تنازلي "العرض ينتهي الليلة"'},
+    {tag:'Snapchat', idea:'ترويج التخفيضات', caption:'خصم اليوم بس 🎉 اطلبوا قبل لا يخلص'},
   ]},
   {name:'الجمعة', platforms:[
-    {tag:'Instagram', text:'Reel أفكار هدايا لبيت جديد 🎁'},
-    {tag:'TikTok', text:'فيديو تركيب مظلة سيارة — حماية عملية وشيك من الشمس'},
-    {tag:'Snapchat', text:'صور عمليات التركيب هذا الأسبوع وشكر العملاء'},
+    {tag:'Instagram', idea:'Reel — أفكار هدايا لبيت جديد، يعرض مجموعة لوحات', caption:'تجهزين هدية لصاحبتك؟ اللوحات هذي بتعجبها أكيد 🎁'},
+    {tag:'TikTok', idea:'مظلات سيارات (موسمي حسب الطقس) — فيديو قبل/بعد تركيب مظلة سيارة', caption:'حماية سيارتك من الشمس بشكل عملي وشيك 🚗☀️'},
+    {tag:'Snapchat', idea:'صور من عمليات التركيب هالأسبوع', caption:'شكرًا لثقتكم فينا 🖤'},
   ]},
 ];
 
@@ -368,12 +591,15 @@ const months = [
   {name:'فبراير 2027 — التارجت الكبير', goal:'1,000,000', budget:'50-52 ألف ريال', start:'2027-02-01', end:'2027-02-28'},
 ];
 
-const checklist = [
-  {title:'ربط واتساب بالسلات المتروكة', desc:'ربط Salla API بتطبيق واتساب لإرسال تذكير تلقائي بعد 30 دقيقة بكود خصم للتوصيل المجاني.', priority:true},
-  {title:'برنامج أعياد الميلاد والولاء', desc:'جمع تواريخ ميلاد العملاء وإرسال خصم تلقائي 15% بعبارة هدايا أعياد الميلاد.'},
-  {title:'إبراز تقسيط تابي وتمارا', desc:'توضيح خيار تقسيم قيمة الطلب على 4 دفعات على المتجر والسوشيال ميديا.'},
-  {title:'تنظيف هيدر المتجر', desc:'مسح كلمة "تخفيضات" المكررة في هيدر سلة.'},
-  {title:'إعادة تنظيم القوائم', desc:'تنظيم القوائم الـ 12 الحالية إلى 5 أقسام رئيسية مرتبة.'},
+const monthlyPerf = [
+  {name:'يناير', total:750389, snap:414810, pct:55.2, spend:29190},
+  {name:'فبراير', total:865748, snap:356265, pct:41.1, spend:28590},
+  {name:'مارس', total:535235, snap:247627, pct:46.2, spend:23478},
+  {name:'أبريل', total:424388, snap:208065, pct:49.0, spend:12045},
+  {name:'مايو', total:453130, snap:251156, pct:55.4, spend:19785},
+  {name:'يونيو', total:458465, snap:277548, pct:60.5, spend:20865},
+  {name:'يوليو', total:248950, snap:87063, pct:35.0, spend:8527},
+  {name:'أغسطس (جزئي)', total:165184, snap:43320, pct:26.2, spend:5347},
 ];
 
 /* ---------- HELPERS ---------- */
@@ -444,10 +670,17 @@ function renderDay(idx){
   document.querySelectorAll('.day-tab').forEach(t=>t.classList.remove('selected'));
   document.querySelector(`.day-tab[data-idx="${idx}"]`).classList.add('selected');
   platformRow.innerHTML = weekDays[idx].platforms.map(p=>`
-    <div class="platform"><div class="tag">${p.tag}</div><p>${p.text}</p></div>
+    <div class="platform">
+      <div class="tag">${p.tag}</div>
+      <div class="platform-body">
+        <div class="idea">${p.idea}</div>
+        ${p.caption ? `<div class="caption">"${p.caption}"</div>` : ''}
+        ${p.hashtags ? `<div class="hashtags">${p.hashtags}</div>` : ''}
+      </div>
+    </div>
   `).join('');
   const tmrw = weekDays[(idx+1)%7];
-  tomorrowNote.innerHTML = `<span class="now-dot"></span> استعدوا لـ <b>بكرة (${tmrw.name})</b>: ${tmrw.platforms[0].text}`;
+  tomorrowNote.innerHTML = `<span class="now-dot"></span> استعدوا لـ <b>بكرة (${tmrw.name})</b>: ${tmrw.platforms[0].idea}`;
 }
 
 weekDays.forEach((d,i)=>{
@@ -480,35 +713,71 @@ phases.forEach(p=>{
   timeline.appendChild(div);
 });
 
-/* ---------- FINANCIAL ---------- */
-const monthGrid = document.getElementById('monthGrid');
-months.forEach(m=>{
-  const isCurrent = m === currentMonth;
-  const div = document.createElement('div');
-  div.className = 'month-card' + (isCurrent ? ' current' : '');
-  div.innerHTML = `
-    <div class="month-name">${m.name}</div>
-    <div class="month-goal">${m.goal} ريال</div>
-    <div class="month-budget">ميزانية الإعلانات: ${m.budget}</div>
-    ${isCurrent ? '<div class="current-flag"><span class="now-dot"></span> الشهر الحالي</div>' : ''}
-  `;
-  monthGrid.appendChild(div);
+/* ---------- TOP PRODUCTS ---------- */
+const topProducts = [
+  {name:'دولاب عبايات بمرآة متحركة - تصميم أنيق وعملي', orders:288, sales:169865.40},
+  {name:'طقم جلسة خارجية 7 أشخاص', orders:88, sales:127050},
+  {name:'مجموعة لوحات فنية - ديب لاند', orders:367, sales:110900},
+  {name:'دولاب أحذية للمداخل', orders:118, sales:81666},
+];
+const productRankList = document.getElementById('productRankList');
+const maxSales = Math.max(...topProducts.map(p=>p.sales));
+topProducts.forEach((p,i)=>{
+  const row = document.createElement('div');
+  row.className = 'product-rank-row';
+  row.innerHTML = `
+    <div class="rank-badge">${i+1}</div>
+    <div class="product-rank-body">
+      <div class="product-rank-head">
+        <span class="product-rank-name">${p.name}</span>
+        <span class="product-rank-sales">${p.sales.toLocaleString('en-US', {maximumFractionDigits:0})} ريال</span>
+      </div>
+      <div class="product-rank-bar-bg"><div class="product-rank-bar-fill" style="width:${(p.sales/maxSales)*100}%"></div></div>
+      <div class="product-rank-orders">${p.orders.toLocaleString('en-US')} طلب</div>
+    </div>`;
+  productRankList.appendChild(row);
 });
 
-/* ---------- AUTOMATION CHECKLIST ---------- */
-const checkList = document.getElementById('checkList');
-checklist.forEach((c,i)=>{
-  const div = document.createElement('div');
-  div.className = 'check-item' + (c.priority ? ' priority' : '');
-  div.innerHTML = `
-    <div class="checkbox">✓</div>
-    <div>
-      <div class="ci-title">${c.title}</div>
-      <div class="ci-desc">${c.desc}</div>
-      ${c.priority ? '<div class="priority-flag">أولوية قصوى الآن</div>' : ''}
+/* ---------- HISTORICAL PERFORMANCE DASHBOARD ---------- */
+const totalSales = monthlyPerf.reduce((s,m)=>s+m.total,0);
+const totalSnap = monthlyPerf.reduce((s,m)=>s+m.snap,0);
+const totalSpend = monthlyPerf.reduce((s,m)=>s+m.spend,0);
+const avgPct = Math.round((totalSnap/totalSales)*100);
+const maxTotal = Math.max(...monthlyPerf.map(m=>m.total));
+
+const perfSummary = document.getElementById('perfSummary');
+perfSummary.innerHTML = `
+  <div class="stat"><div class="stat-val">${totalSales.toLocaleString('en-US')}</div><div class="stat-label">إجمالي مبيعات سلة 2026 (ريال)</div></div>
+  <div class="stat"><div class="stat-val">${totalSnap.toLocaleString('en-US')}</div><div class="stat-label">إجمالي مبيعات سناب شات (ريال)</div></div>
+  <div class="stat"><div class="stat-val">${avgPct}%</div><div class="stat-label">متوسط نسبة سناب من المبيعات</div></div>
+`;
+
+const perfList = document.getElementById('perfList');
+perfList.innerHTML = `
+  <div class="perf-legend">
+    <span><span class="dot" style="background:rgba(201,164,76,0.3);"></span> إجمالي مبيعات الشهر</span>
+    <span><span class="dot" style="background:linear-gradient(to left, var(--gold), var(--gold-light));"></span> نسبة سناب شات من المبيعات</span>
+  </div>
+`;
+monthlyPerf.forEach(m=>{
+  const barWidth = (m.total / maxTotal) * 100;
+  const row = document.createElement('div');
+  row.className = 'perf-row';
+  row.innerHTML = `
+    <div class="perf-head">
+      <span class="perf-month">${m.name}</span>
+      <span class="perf-total">${m.total.toLocaleString('en-US')} ريال</span>
+    </div>
+    <div class="perf-bar-bg">
+      <div class="perf-bar-fill" style="width:${barWidth}%">
+        <div class="perf-bar-snap" style="width:${m.pct}%"></div>
+      </div>
+    </div>
+    <div class="perf-meta">
+      <span>سناب شات: <b>${m.snap.toLocaleString('en-US')} ريال</b> (${m.pct}%)</span>
+      <span>الصرف: <b>${m.spend.toLocaleString('en-US')} ريال</b></span>
     </div>`;
-  div.onclick = ()=> div.classList.toggle('done');
-  checkList.appendChild(div);
+  perfList.appendChild(row);
 });
 </script>
 </body>
